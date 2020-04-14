@@ -12,11 +12,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-<form action="new-form" action="/matzas" method="POST">
+<form id="new-form" action="/matzas" method="POST">
   <label>Title:</label>
   <input type="text" name="title">
+  <br>
+  <!-- <label>Image:</label>
+  <input type="file" name="filename" /> -->
+  <br>
   <label>Ingredients:</label>
   <input type="text" name="ingredients">
+  <br>
   <label>Instructions:</label>
   <input type="text" name="instructions">
   <input type="submit" value="Add Post">

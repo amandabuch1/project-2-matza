@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const commentSchema = new Schema({
+    comment: String,
+},
+{
+    timestamps: true
+});
+
 const matzaSchema = new Schema({
     title: {
         type: String,
@@ -11,6 +18,8 @@ const matzaSchema = new Schema({
         required: true
     },
     instructions: String,
+    comments: [commentSchema],
+
 
 },{
     timestamps: true

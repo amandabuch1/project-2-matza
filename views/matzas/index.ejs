@@ -12,21 +12,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-  <nav>
-    <a href="/matzas">Matza Time</a>
-    <ul class="right">
-      <li>
-        <% if (user) { %>
-        <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-        <% } else { %>
-        <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-        <% } %>
-      </li>
-      <li><%= user ? `Logged in as: ${user.name}` : "Not Logged In" %></li>
-    </ul>
-  </nav>
-
-  <a href="/matzas/new">Create a new Post</a>
+  <div class="navbar-fixed">
+    <nav>
+      <a href="/matzas">Matza Time</a>
+      <ul class="right">
+        <li>
+          <% if (user) { %>
+          <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+          <% } else { %>
+          <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+          <% } %>
+        </li>
+        <li><%= user ? `Logged in as: ${user.name}` : "Not Logged In" %></li>
+      </ul>
+    </nav>
+  </div>
+  <div>
+    <% if (user) { %>
+      <a href="/matzas/new">Create a new Post</a>
+      <% } else { %>
+        <h3>In order to post please log in</h3>
+      <% } %>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>Title</th>
+      </tr>
+      <tbody>
+        <% matzas.forEach(function(m) { %>
+          <tr>
+            <td><%= m.title %></td>
+            <td><a href="/movies/<%= m._id %>">DETAILS</a></td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
+  </div>
+  
 
 </body>
 </html>

@@ -20,6 +20,7 @@ require('./config/passport');
 
 var indexRouter = require('./routes/index');
 const matzasRouter = require('./routes/matzas');
+const apiMatzasRouter = require('./routes/api/matzas');
 var usersRouter = require('./routes/users');
 
 
@@ -43,9 +44,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-
 app.use('/', indexRouter);
 app.use('/matzas', matzasRouter);
+app.use('/api/matzas',apiMatzasRouter)
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

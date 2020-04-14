@@ -1,4 +1,4 @@
-var createError = require('http-errors');
+// var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -19,9 +19,10 @@ require('./config/database');
 require('./config/passport');
 
 var indexRouter = require('./routes/index');
-const matzasRouter = require('./routes/matzas');
 const apiMatzasRouter = require('./routes/api/matzas');
-var usersRouter = require('./routes/users');
+const apiCommentsRouter= require('./routes/api/comments')
+const matzasRouter = require('./routes/matzas');
+// const commentsRouter = require('./routes/comments');
 
 
 
@@ -45,14 +46,16 @@ app.use(passport.session());
 
 
 app.use('/', indexRouter);
+app.use('/api/matzas',apiMatzasRouter);
+app.use('/api/matzas',apiCommentsRouter);
 app.use('/matzas', matzasRouter);
-app.use('/api/matzas',apiMatzasRouter)
-app.use('/users', usersRouter);
+// app.use('/', commentsRouter)
+
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 // error handler
 app.use(function(err, req, res, next) {

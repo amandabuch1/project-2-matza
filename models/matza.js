@@ -13,12 +13,16 @@ const matzaSchema = new Schema({
         type: String,
         required: true
     },
+    image:{
+        type: String,
+    },
     ingredients: {
         type: String,
         required: true
     },
     instructions: String,
     comments: [commentSchema],
+    
 
 
 },{

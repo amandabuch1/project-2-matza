@@ -36,40 +36,47 @@
         <h3>In order to post please log in</h3>
       <% } %>
   </div>
-  <div>
-    <table>
-      <tr>
-        <th>Title</th>
-      </tr>
-      <tbody>
-        <% matzas.forEach(function(m) { %>
-          <tr>
-            <td><%= m.title %></td>
-            <td><a href="/movies/<%= m._id %>">DETAILS</a></td>
-          </tr>
-          <% }); %>
-      </tbody>
-    </table>
-  </div>
   
   <main>
-    <div class="card">
+    <div class="centeringTheCards">
+
+    <% matzas.forEach(function(m) { %>
+    <div class="row">
+      <div class="col s12 m7">
+        <div class="card">
+          <div class="card-image">
+            <img class="activator matzas" src="<%= m.image %>" alt="">
+            <span class="card-title"><%= m.title %></span>
+          </div>
+          <!-- <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div> -->
+          <div class="card-action">
+            <a href="/matzas/<%= m._id %>">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+
+  </div>
+
+
+
+    <!-- <div class="card">
       <% matzas.forEach(function(m) { %>
       <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="images/office.jpg">
+        <img class="activator matzas" src="<%= m.image %>" alt="">
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4"><%= m.title %><i class="material-icons right">more_vert</i></span>
         <p><a href="/movies/<%= m._id %>">Details</a></p>
         <% }); %>
       </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-      </div>
     </div>
 
-  </main>
+  </main> -->
 
 </body>
 </html>

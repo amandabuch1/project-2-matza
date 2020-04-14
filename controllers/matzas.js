@@ -44,7 +44,7 @@ const create = (req, res) =>{
 
 module.exports = {
     index,
-    // show,
+    show,
     new: newMatza,
     create
 };

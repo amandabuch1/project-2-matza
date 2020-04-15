@@ -1,10 +1,12 @@
 // var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
 var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+// session middleware
+var session = require('express-session');
 var passport = require('passport');
+// methodoverride goes here
 
 // load the env vars
 require('dotenv').config();
@@ -18,10 +20,11 @@ require('./config/database');
 // LOAD AND CONFIG PASSPORT.JS// LOAD AND CONFIG PASSPORT.JS
 require('./config/passport');
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
+const matzasRouter = require('./routes/matzas');
+// api routes
 const apiMatzasRouter = require('./routes/api/matzas');
 const apiCommentsRouter= require('./routes/api/comments')
-const matzasRouter = require('./routes/matzas');
 // const commentsRouter = require('./routes/comments');
 
 
@@ -30,11 +33,14 @@ const matzasRouter = require('./routes/matzas');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// method_override middleware goes here
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// the following line had extended: false, but completed code had true so changing to see what happens
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+// mount the session middleware
 app.use(session({
   secret: 'MatzaTime!',
   resave: false,
@@ -46,9 +52,9 @@ app.use(passport.session());
 
 
 app.use('/', indexRouter);
+app.use('/matzas', matzasRouter);
 app.use('/api/matzas',apiMatzasRouter);
 app.use('/api/matzas',apiCommentsRouter);
-app.use('/matzas', matzasRouter);
 // app.use('/', commentsRouter)
 
 
@@ -57,7 +63,7 @@ app.use('/matzas', matzasRouter);
 //   next(createError(404));
 // });
 
-// error handler
+// error handler (don't know what this is, isn't in the completed code)
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;

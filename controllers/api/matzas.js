@@ -2,13 +2,19 @@ const Matza = require('../../models/matza');
 
 
 const index = (req, res) => {
-    Matza.find({}).then((matzas)=>{
+    Matza.find()
+    .populate('user')
+    .exec((err, matzas)=>{
         res.status(200).json(matzas)
     });
 };
 
 const create = (req, res) => {
+    console.log(req.body);
+    console.log(req.user);
+    
     Matza.create(req.body).then((matza)=>{
+    
         // 201 is the customary for create
         res.status(201).json(matza);
 

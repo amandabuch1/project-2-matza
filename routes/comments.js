@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var commentsCtrl = require('../controllers/api/comments');
+var commentsCtrl = require('../controllers/comments');
 
 router.post('/matzas/:id/comments', commentsCtrl.create);
 

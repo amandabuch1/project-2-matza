@@ -47,7 +47,7 @@ app.use(cookieParser());
 app.use(session({
   secret: 'MatzaTime!',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
 }));
 
 app.use(passport.initialize());

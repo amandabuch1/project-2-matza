@@ -1,31 +1,40 @@
 
 const Matza = require('../models/matza');
-const Comment = require('../models/comment');
+
+// const Comment = require('../models/comment');
 
 const create =(req, res)=>{
-  
-  Matza.findById(req.params.id)
-  .populate('user')
-  .exec(function(err, matza) {
-    console.log(req.body)
-    req.body.user = req.user._id;
-    matza.comments.push(req.body);
-    matza.save(function(err) {
-      res.redirect('/matzas')
-    });
-  })
-
-// BEFORE KYLE
+// //   console.log('!!!!!!!')
 //   Matza.findById(req.params.id)
 //   .populate('user')
 //   .exec(function(err, matza) {
 //     console.log(req.body)
-//     req.body.user = req.user._id;
-//     matza.comments.push(req.body);
+//     // req.body.user = req.user._id;
+//     Comment.create(req.body)
+//     .then((comment)=>{
+//         console.log(comment);
+//         matza.comments.push(comment);
+//     });
 //     matza.save(function(err) {
 //       res.redirect('/matzas')
 //     });
 //   })
+
+
+
+// BEFORE KYLE
+  Matza.findById(req.params.id)
+  .populate('comments.user')
+  .exec(function(err, matza) {
+    console.log(matza.comments[0].user);
+    req.body.user = req.user._id;
+    // req.body.userName = req.user.name;
+    
+    matza.comments.push(req.body);
+    matza.save(function(err) {
+        res.redirect(`/matzas/${matza._id}`);
+    });
+  })
 
 
   // WORKING BUT NOT ADDING ID

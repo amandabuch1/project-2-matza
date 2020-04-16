@@ -23,7 +23,8 @@ const newMatza = (req, res) => {
 
 const show = (req, res) => {
     Matza.findById(req.params.id)
-    .then((matza)=>{
+    .populate('comments.user')
+    .exec(function(err, matza) {
         // res.send(matza)
         res.render('matzas/show', { title: 'Details', matza });
     });
@@ -37,9 +38,11 @@ const create = (req, res) =>{
     // FED USER ID TO THE MATZA whic loged the id in the new matza
     req.body.user = req.user._id;
 
-    req.body.comment
+    
     // create a new matza
     const matza = new Matza(req.body);
+
+
     
     // save the new matza to the database
     matza.save(function(err) {

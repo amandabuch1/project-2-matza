@@ -26,7 +26,7 @@ const create =(req, res)=>{
   Matza.findById(req.params.id)
   .populate('comments.user')
   .exec(function(err, matza) {
-    console.log(matza.comments[0].user);
+    // console.log(matza.comments[0].user);
     req.body.user = req.user._id;
     // req.body.userName = req.user.name;
     

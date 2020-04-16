@@ -54,10 +54,6 @@ const create = (req, res) =>{
     })
 };
 
-const update = (req, res) =>{
-
-};
-
 const delMatza = (req, res) =>{
     console.log('hit delete')
     Matza.deleteOne({_id:req.params.id})
@@ -66,11 +62,29 @@ const delMatza = (req, res) =>{
     })
 };
 
+const update = (req, res) =>{
+    Matza.findByIdAndUpdate(req.params.id, req.body, {new: true},(err, matza)=>{
+        res.redirect("/matzas")
+        
+    })
+
+};
+
+const edit = (req, res) =>{
+    Matza.findById(req.params.id,(err, matza)=>{
+        res.render("./matzas/edit.ejs", {
+            matza: matza
+        });
+    });
+
+};
+
 module.exports = {
     index,
     show,
     new: newMatza,
     create,
-    update,
     delMatza,
+    update,
+    edit
 };

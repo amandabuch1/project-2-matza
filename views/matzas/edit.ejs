@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Matza Time</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- Google Icon Fonts used by Materialize -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Materialize CSS Framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <!-- JavaScript for Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+<h1>Edit Your Matza Recipe</h1>
+<form action="/matzas/<%= matza._id %>?_method=PUT" method="POST">
+  <label>Title:</label>
+  <input type="text" name="title" value="<%= matza.title %>">
+  <br>
+  <label>Image:</label>
+  <input type="text" name="image" value="<%= matza.image %>">
+  <br>
+  <label>Ingredients:</label>
+  <input type="text" name="ingredients" value="<%= matza.ingredients %>">
+  <br>
+  <label>Instructions:</label>
+  <input type="text" name="instructions" value="<%= matza.instructions %>">
+  <br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

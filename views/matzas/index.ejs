@@ -23,11 +23,11 @@
           </div>
           <div class="card-action">
             <% if (user) { %>
-            <% if (m.user._id.toString() === user._id.toString()) { %>
-              <form action="/matzas/<%= m._id %>?_method=DELETE" method="POST" class="secondary-content">
-                <button type="submit" class="btn-small red-text">Delete Post</button>
-              </form>
-            <% } %>
+              <% if (m.user._id.toString() === user._id.toString()) { %>
+                <form action="/matzas/<%= m._id %>?_method=DELETE" method="POST" class="secondary-content">
+                  <button type="submit" class="btn-small red-text">Delete Post</button>
+                </form>
+              <% } %>
             <% } %>
             <a href="/matzas/<%= m._id %>">Details</a>
           </div>

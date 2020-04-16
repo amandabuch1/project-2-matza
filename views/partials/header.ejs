@@ -2,12 +2,12 @@
 <html lang="en">
     <head>
         <title>Matza Time</title>
-        <link rel='stylesheet' href='/stylesheets/style.css' />
+        
           <!-- Google Icon Fonts used by Materialize -->
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
           <!-- Materialize CSS Framework -->
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-          <link rel="stylesheet" href="stylesheets/style.css" />
+          <link rel="stylesheet" href="/stylesheets/style.css" />
           <!-- JavaScript for Materialize -->
           <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
       </head>
@@ -16,6 +16,13 @@
           <nav>
             <a href="/matzas">Matza Time</a>
             <ul class="right">
+              <li>
+                <% if (user) { %>
+                    <a class=".btn-small" href="/matzas/new">Create a new Post</a>
+                  <% } else { %>
+                    <a href="/auth/google">Login to create a post</a>
+                  <% } %>
+              </li>
               <li>
                 <% if (user) { %>
                   <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>

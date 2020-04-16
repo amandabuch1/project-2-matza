@@ -1,18 +1,7 @@
 <%- include('../partials/header') %>
 
 <main>
-
-  <div>
-    <% if (user) { %>
-      <button>
-
-        <a href="/matzas/new">Create a new Post</a>
-      </button>
-      <% } else { %>
-        <h3>In order to post or comment please log in</h3>
-      <% } %>
-  </div>
-  
+ 
   <% matzas.forEach(function(m) { %>
     <div class="row">
       <div class="col s12 m7">

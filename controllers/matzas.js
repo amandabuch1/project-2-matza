@@ -17,14 +17,20 @@ const index = (req, res) => {
 
 const newMatza = (req, res) => {
     console.log(req.User)
-    res.render('matzas/new', { title: 'Add Post' });
+    res.render('matzas/new', { 
+        title: 'Add Post',
+        user: req.user
+ });
 };
 
 const show = (req, res) => {
     Matza.findById(req.params.id)
     .populate('comments.user')
     .exec(function(err, matza) {
-        res.render('matzas/show', { title: 'Details', matza });
+        res.render('matzas/show', { 
+            title: 'Details',
+            matza, 
+            user: req.user });
     });
 }; 
 
@@ -62,7 +68,8 @@ const update = (req, res) =>{
 const edit = (req, res) =>{
     Matza.findById(req.params.id,(err, matza)=>{
         res.render("./matzas/edit.ejs", {
-            matza: matza
+            matza: matza,
+            user: req.user
         });
     });
 };

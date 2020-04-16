@@ -1,11 +1,9 @@
-const User = require('../models/user');
 const Matza = require('../models/matza');
 
 const index = (req, res) => {
     Matza.find()
     // showing entire user object including name field
     .populate('user')
-
     .exec(function(err, matzas) {
         console.log(matzas);
         res.render('matzas/index',{
@@ -38,6 +36,8 @@ const create = (req, res) =>{
     }
     // FED USER ID TO THE MATZA whic loged the id in the new matza
     req.body.user = req.user._id;
+
+    req.body.comment
     // create a new matza
     const matza = new Matza(req.body);
     
@@ -49,19 +49,25 @@ const create = (req, res) =>{
         res.redirect(`/matzas`);
         
     })
+};
 
-    // function addFact(req, res, next) {
-    //     req.user.facts.push(req.body);
-    //     req.user.save(function(err) {
-    //       res.redirect('/students');
-    //     });
-    // }
- 
+const update = (req, res) =>{
+
+};
+
+const delMatza = (req, res) =>{
+    console.log('hit delete')
+    Matza.deleteOne({_id:req.params.id})
+    .then((err)=>{
+        res.redirect('/matzas');
+    })
 };
 
 module.exports = {
     index,
     show,
     new: newMatza,
-    create
+    create,
+    update,
+    delMatza,
 };

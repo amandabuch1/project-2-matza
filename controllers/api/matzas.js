@@ -28,6 +28,11 @@ const show = (req, res) => {
 };
 
 const deleteOne = (req, res) => {
+    // Matza.deleteOne({_id:req.params.id})
+    // .then((err)=>{
+    //     res.redirect('\matza')
+    // })
+
     Matza.findByIdAndRemove(req.params.id).then((matza)=>{
         res.status(200).json(matza);
     });

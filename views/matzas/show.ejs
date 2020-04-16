@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
+  
 
 <section>
     <div>Title: </div>
@@ -25,12 +26,39 @@
 </section>
 
 
-<!-- <form id="add-comment-form" method="POST"
-  action="/matzas/<%= matza._id %>/reviews">
+
+
+<form id="add-comment-form" method="POST"
+  action="/matzas/<%= matza._id %>/comments">
   <label>Comment:</label>
   <textarea name="comment"></textarea>
   <input type="submit" value="Add Comment">
-</form> -->
+</form>
+
+
+<% if (matza.comments.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Comment</th>
+  
+      </tr>
+    </thead>
+    <tbody>
+      <% var total = 0 %>
+      <% matza.comments.forEach(function(c) { %>
+        <tr>
+          <td> </td>
+          <td><%= c.comment %></td>
+          
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+<% } else { %>
+  <h5>Comments Yet</h5>
+<% } %>
 
 
 </body>

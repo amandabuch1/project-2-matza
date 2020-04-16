@@ -12,61 +12,61 @@
 </head>
 <body>
   
-
 <section>
-    <div>Title: </div>
-    <div><%= matza.title %></div>
-    <div>Image: </div>
-    <div><%= matza.image %></div>
-    <div>Ingredients: </div>
-    <div><%= matza.ingredients %></div>
-    <div>Instructions: </div>
-    <div><%= matza.instructions %></div>
-    
-    
+  <div class="whiteBackgound">
+    <div >
+      <img src="<%= matza.image %>" class="imageShowPg">
+    </div>
+
+    <div>
+      <div>
+        Title: <%= matza.title %>
+      </div>
+      <div>
+        Ingredients: <%= matza.ingredients %>
+      </div>
+      <div>
+        Instructions: <%= matza.instructions %>
+      </div>
+    </div>
   
-     
-        <a href="/matzas/<%= matza._id %>/edit">Edit your Matza</a>
-      
     
+    <a href="/matzas/<%= matza._id %>/edit">Edit your Matza</a>
+  </div>
+   
 </section>
-  
-  
-  
 
+<div class="whiteBackgound">
+  <form id="add-comment-form" method="POST"
+    action="/matzas/<%= matza._id %>/comments">
+    <label>Comment:</label>
+    <textarea name="comment"></textarea>
+    <input type="submit" value="Add Comment" class>
+  </form>
+</div>
 
-<form id="add-comment-form" method="POST"
-  action="/matzas/<%= matza._id %>/comments">
-  <label>Comment:</label>
-  <textarea name="comment"></textarea>
-  <input type="submit" value="Add Comment">
-</form>
-
-
-<% if (matza.comments.length) { %>
-  <table>
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Comment</th>
-  
-      </tr>
-    </thead>
-    <tbody>
-      <% var total = 0 %>
-      <% matza.comments.forEach(function(c) { %>
+<div class="whiteBackgound">
+  <% if (matza.comments.length) { %>
+    <table>
+      <thead>
         <tr>
-          <td> <%= c.user.name %></td>
-          <td><%= c.comment %></td>
-          
+          <th>User</th>
+          <th>Comment</th>
         </tr>
+      </thead>
+      <tbody>
+        <% var total = 0 %>
+        <% matza.comments.forEach(function(c) { %>
+          <tr>
+            <td> <%= c.user.name %></td>
+            <td><%= c.comment %></td>
+          </tr>
         <% }); %>
-    </tbody>
-  </table>
-<% } else { %>
-  <h5>Comments Yet</h5>
-<% } %>
+      </tbody>
+    </table>
+    <% } else { %>
+      <h5>No Comments Yet</h5>
+    <% } %>
+</div>
 
-
-</body>
-</html>
+  <%- include('../partials/footer') %>

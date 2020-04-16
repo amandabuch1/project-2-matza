@@ -13,7 +13,6 @@ const index = (req, res) => {
             matzas
         });
     });
-
 };
 
 const newMatza = (req, res) => {
@@ -25,7 +24,6 @@ const show = (req, res) => {
     Matza.findById(req.params.id)
     .populate('comments.user')
     .exec(function(err, matza) {
-        // res.send(matza)
         res.render('matzas/show', { title: 'Details', matza });
     });
 }; 
@@ -37,25 +35,18 @@ const create = (req, res) =>{
     }
     // FED USER ID TO THE MATZA whic loged the id in the new matza
     req.body.user = req.user._id;
-
-    
     // create a new matza
     const matza = new Matza(req.body);
-
-
-    
     // save the new matza to the database
     matza.save(function(err) {
-        
         if (err) return res.redirect('/matzas/new');
         // redirect to matza index page
         res.redirect(`/matzas`);
-        
     })
 };
 
 const delMatza = (req, res) =>{
-    console.log('hit delete')
+    // console.log('hit delete')
     Matza.deleteOne({_id:req.params.id})
     .then((err)=>{
         res.redirect('/matzas');
@@ -65,9 +56,7 @@ const delMatza = (req, res) =>{
 const update = (req, res) =>{
     Matza.findByIdAndUpdate(req.params.id, req.body, {new: true},(err, matza)=>{
         res.redirect("/matzas")
-        
     })
-
 };
 
 const edit = (req, res) =>{
@@ -76,7 +65,6 @@ const edit = (req, res) =>{
             matza: matza
         });
     });
-
 };
 
 module.exports = {

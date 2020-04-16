@@ -3,16 +3,56 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   width: 100%;
   padding: 0;
+  background-image: url('https://i.imgur.com/tNmbWuN.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height:500px;
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(133, 204, 255);
 }
 
 nav {
   width: 100%;
+  background-color: rgb(133, 204, 255);
 
 }
+
+.card{
+  border: solid 5px white;
+}
+
+button {
+  margin: auto;
+}
+
+
+
+.btn-small{
+  background-color: white;
+  border: solid 1px rgb(133, 204, 255);
+}
+
+.btn-small:hover {
+  background-color:rgba(133, 204, 255, 0.2);
+}
+
+.whiteBackgound {
+  background-color: white;
+  padding: 5px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+
+}
+
+.imageShowPg{
+  height: 200px;
+}
+
+
 
 #show-page {
   display: grid;

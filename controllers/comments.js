@@ -1,6 +1,5 @@
 const Matza = require('../models/matza');
 
-
 const create =(req, res)=>{
   Matza.findById(req.params.id)
   .populate('comments.user')
@@ -15,5 +14,4 @@ const create =(req, res)=>{
 
 module.exports = {
   create,
-
 }

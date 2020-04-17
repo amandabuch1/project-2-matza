@@ -16,7 +16,7 @@ const index = (req, res) => {
 };
 
 const newMatza = (req, res) => {
-    console.log(req.User)
+    // console.log(req.User)
     res.render('matzas/new', { 
         title: 'Add Post',
         user: req.user
@@ -52,7 +52,6 @@ const create = (req, res) =>{
 };
 
 const delMatza = (req, res) =>{
-    // console.log('hit delete')
     Matza.deleteOne({_id:req.params.id})
     .then((err)=>{
         res.redirect('/matzas');

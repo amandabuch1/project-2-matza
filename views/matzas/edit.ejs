@@ -1,7 +1,9 @@
 <%- include('../partials/header') %>
 
   <div class="whiteBackgound">
+
     <h1>Edit Your Matza Recipe</h1>
+
     <form action="/matzas/<%= matza._id %>?_method=PUT" method="POST">
       <label>Title:</label>
       <input type="text" name="title" value="<%= matza.title %>">
@@ -17,6 +19,7 @@
       <br>
       <input type="submit" value="Submit">
     </form>
+  
   </div>
 
 <%- include('../partials/footer') %>

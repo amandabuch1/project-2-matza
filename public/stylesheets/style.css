@@ -22,19 +22,17 @@ nav a {
   margin-left: 20px;
 }
 
-.right{
+.right {
   margin-right: 20px;
 }
 
-.card{
+.card {
   border: solid 5px white;
 }
 
 button {
   margin: auto;
 }
-
-
 
 .btn-small{
   background-color: white;
@@ -55,11 +53,25 @@ button {
 
 }
 
-.imageShowPg{
-  height: 200px;
+.imageShowPg {
+  height: 50vh;
 }
 
+.showMatza {
+  display: flex;
+  flex-direction: row;
+}
 
+.showMatza > .imageMatza {
+  flex: auto;
+}
+
+.contentMatza {
+  width: 50%;
+  margin: auto;
+  margin-right: auto;
+  padding-left: 10px;
+}
 
 #show-page {
   display: grid;
@@ -70,36 +82,3 @@ button {
 #show-page div:nth-child(even) {
   font-weight: bold;
 }
-
-/* main{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
-} */
-
-
-/* .centeringTheCards {
-  place-content: center;
-} */
-  /* display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
- }
-
- .centeringTheCards .row{
-   margin: 0 auto;
- } */
-
- /* .row{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
- } */

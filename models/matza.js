@@ -30,13 +30,6 @@ const matzaSchema = new Schema({
     },
     instructions: String,
     comments: [commentSchema],
-
-    // comments: [{
-    //     type: Schema.Types.ObjectId, 
-    //     ref: 'Comment'
-    // }],
-
-
 },{
     timestamps: true
 });

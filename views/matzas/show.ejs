@@ -1,12 +1,12 @@
 <%- include('../partials/header') %>
 
 <section>
-  <div class="whiteBackgound">
-    <div >
+  <div class="whiteBackgound showMatza">
+    <div class="imageMatza">
       <img src="<%= matza.image %>" class="imageShowPg">
     </div>
 
-    <div>
+    <div class="contentMatza">
       <div>
         Title: <%= matza.title %>
       </div>
@@ -16,20 +16,19 @@
       <div>
         Instructions: <%= matza.instructions %>
       </div>
-    </div>
-  
-    <% if (user) { %>
-      <% if (matza.user._id.toString() === user._id.toString()) { %>
-        <a href="/matzas/<%= matza._id %>/edit">Edit your Matza</a>
+      <% if (user) { %>
+        <% if (matza.user._id.toString() === user._id.toString()) { %>
+          <a href="/matzas/<%= matza._id %>/edit">Edit your Matza</a>
+        <% } %>
       <% } %>
-    <% } %>
-  </div>
-   
+    </div>
+  </div>  
 </section>
 
 <div class="whiteBackgound">
   <form id="add-comment-form" method="POST"
     action="/matzas/<%= matza._id %>/comments">
+    <p>In order to comment you need to be logged in</p>
     <label>Comment:</label>
     <textarea name="comment"></textarea>
     <input type="submit" value="Add Comment" class>
@@ -60,4 +59,4 @@
     <% } %>
 </div>
 
-  <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

@@ -14,7 +14,7 @@ Image of new form for matza recipe:
 
 Image of detail page of a matza recipe with comments:
 
-<img src="https://i.imgur.com/8iwWe5N.png">
+<img src="https://i.imgur.com/1Pv4VDQ.png">
 
 Image of update form for a matza recipe:
 

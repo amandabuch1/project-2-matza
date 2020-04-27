@@ -50,13 +50,18 @@
           <tr>
             <td> <%= c.user.name %></td>
             <td><%= c.comment %></td>
+            <td>             
+              <form action="/matzas/<%= matza._id %>/comments/<%= c._id %>?_method=DELETE" method="POST" class="secondary-content">
+                <button type="submit" class="btn-small red-text">Delete Post</button>
+              </form>
+            </td>
           </tr>
         <% }); %>
       </tbody>
     </table>
     <% } else { %>
       <h5>No Comments Yet</h5>
-    <% } %>
+  <% } %>
 </div>
 
 <%- include('../partials/footer') %>

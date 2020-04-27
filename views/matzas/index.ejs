@@ -2,36 +2,37 @@
 
 <main>
  
-  <% matzas.forEach(function(m) { %>
-    <div class="row">
-      <div class="col s12 m7">
-        <div class="card">
-          <div class="card-image">
-            <img class="activator matzas" src="<%= m.image %>" alt="">
-            <span class="card-title"><%= m.title %></span>
-          </div>
-          <div class="card-content">
-            <h6>
-              <% if(m.user) { %>
-                <%= m.user.name %>
-              <% } %>
-            </h6>
-          </div>
-          <div class="card-action">
-            <% if (user) { %>
-              <% if (m.user._id.toString() === user._id.toString()) { %>
-                <form action="/matzas/<%= m._id %>?_method=DELETE" method="POST" class="secondary-content">
-                  <button type="submit" class="btn-small red-text">Delete Post</button>
-                </form>
-              <% } %>
-            <% } %>
-            <a href="/matzas/<%= m._id %>">Details</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  <% }); %>
-    
+   
+   <% matzas.forEach(function(m) { %>
+     <div class="row">
+       <div class="col s6 offset-s3 ">
+         <div class="card">
+           <div class="card-image">
+             <img class="activator matzas" src="<%= m.image %>" alt="">
+             <span class="card-title"><%= m.title %></span>
+           </div>
+           <div class="card-content">
+             <h6>
+               <% if(m.user) { %>
+                 <%= m.user.name %>
+               <% } %>
+             </h6>
+           </div>
+           <div class="card-action">
+             <% if (user) { %>
+               <% if (m.user._id.toString() === user._id.toString()) { %>
+                 <form action="/matzas/<%= m._id %>?_method=DELETE" method="POST" class="secondary-content">
+                   <button type="submit" class="btn-small red-text">Delete Post</button>
+                 </form>
+               <% } %>
+             <% } %>
+             <a href="/matzas/<%= m._id %>">Details</a>
+           </div>
+         </div>
+       </div>
+     </div>
+   <% }); %>
+
 </main>
   
 <%- include('../partials/footer') %>
